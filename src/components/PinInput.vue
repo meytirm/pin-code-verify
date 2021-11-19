@@ -28,6 +28,9 @@ export default {
       type: Number,
     },
   },
+  mounted() {
+    this.inputRefs[0].focus();
+  },
   methods: {
     setInputRef(el) {
       if (el) {
