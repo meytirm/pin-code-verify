@@ -1,13 +1,14 @@
 <template>
   <div class="wrapper">
-    <input class="pin-input col-2 border-radius-8 q-py-xs bg-tes-grey-light"
-           @input="inputMovement"
-           v-for="(digit, index) in digits"
-           pattern="\d*"
-           maxlength="1"
-           :data-index="index"
-           :key="digit"
-           :ref="setInputRef"
+    <input
+      class="pin-input col-2 border-radius-8 q-py-xs bg-tes-grey-light"
+      @input="inputMovement"
+      v-for="(digit, index) in digits"
+      pattern="\d*"
+      maxlength="1"
+      :data-index="index"
+      :key="digit"
+      :ref="setInputRef"
     />
   </div>
 </template>
@@ -24,8 +25,8 @@ export default {
   props: {
     digits: {
       default: 4,
-      type: Number
-    }
+      type: Number,
+    },
   },
   methods: {
     setInputRef(el) {
@@ -64,11 +65,9 @@ export default {
     },
     submitCode(code) {
       this.$emit("submitCode", code);
-    }
-  }
+    },
+  },
 };
-
-
 </script>
 
 <style lang="css" scoped>
