@@ -1,27 +1,34 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <h1>pin code verify with Vue3</h1>
+  <pin-input :digits="4" @submit-code="submitCode" />
+  <count-down-timer />
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import CountDownTimer from "@/components/CountDownTimer.vue";
+import PinInput from "@/components/PinInput.vue";
 
 export default defineComponent({
   name: "App",
-  components: {
-    HelloWorld,
-  },
+  components: { PinInput, CountDownTimer },
+  setup() {
+    function submitCode(code: string) {
+      alert('submit: ' + code);
+    }
+
+    return {
+      submitCode
+    }
+  }
 });
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 60px;
 }
 </style>

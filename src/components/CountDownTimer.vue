@@ -1,13 +1,10 @@
 <template>
   <div>
-    <div>{{ timer }}</div>
+    <div v-if="timer">{{ timer }} to resend the code</div>
     <div>
-      <button v-if="!timer && counter < 0" @click="counter = seconds">
+      <button v-if="!timer && counter < 0" @click="setTimer()">
         reset
       </button>
-    </div>
-    <div>
-      <button v-if="counter === seconds" @click="setTimer">send Pin</button>
     </div>
   </div>
 </template>
@@ -27,6 +24,9 @@ export default {
       timer: "",
       interval: null,
     };
+  },
+  mounted() {
+    this.setTimer()
   },
   methods: {
     setTimer() {
